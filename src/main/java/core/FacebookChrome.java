@@ -50,7 +50,9 @@ public class FacebookChrome {
 
 	driver.findElement(By.id("email")).sendKeys(email_address);
 
-	driver.findElement(By.id("pass")).sendKeys(password);
+//	driver.findElement(By.id("pass")).sendKeys(password);
+	driver.findElement(By.xpath("//*[@id='js_v']/div/div/ul/li[15]/a/span/span)[contains('Log Out')]")).sendKeys(password);
+		
 	driver.findElement(By.id("loginbutton")).click();
 
 	Thread.sleep(1000);

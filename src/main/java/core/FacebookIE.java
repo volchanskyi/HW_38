@@ -54,11 +54,9 @@ public class FacebookIE {
 	driver.findElement(By.id("email")).sendKeys(email_address);
 
 	driver.findElement(By.id("pass")).sendKeys(password);
-//	Thread.sleep(1000);
-//	driver.findElement(By.partialLinkText("Log In")).click();
-//	driver.findElement(By.id("u_0_3")).click();
+
 	 driver.findElement(By.id("loginbutton")).click();
-//	driver.findElement(By.xpath("//*[@data-testid='royal_login_button']"));
+	
 	Thread.sleep(1000);
 	driver.findElement(By.xpath("//*[@id='u_0_a']/div[1]/div[1]/div/a/span")).click();
 
