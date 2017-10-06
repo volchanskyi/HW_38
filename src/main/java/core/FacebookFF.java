@@ -1,6 +1,7 @@
 package core;
 
 import java.io.File;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FacebookFF {
 
@@ -37,9 +39,9 @@ public class FacebookFF {
 
 	System.setProperty("webdriver.gecko.driver", driverPath);
 	driver = new FirefoxDriver(profile);
-	driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	driver.manage().window().maximize();
-
+	WebDriverWait wait = new WebDriverWait(driver, 10);
 	driver.get(url);
 
 	Thread.sleep(1000); // Pause in milleseconds (1000 – 1 sec)
@@ -59,14 +61,19 @@ public class FacebookFF {
 	driver.findElement(By.id("loginbutton")).click();
 
 	Thread.sleep(1000);
-	for (int i = 0; i < 5; i++) {
+
+	for (int i = 0; i < 2; i++) {
 	    driver.navigate().refresh();
 	}
 	WebElement abc = driver.findElement(By.linkText("Not Now"));
 	if (abc != null) {
 	    abc.click();
 	}
-	
+
+	// if (wait.until(ExpectedConditions.alertIsPresent()) != null) {
+	// driver.findElement(By.linkText("Not Now")).click();
+	// }
+
 	driver.findElement(By.xpath("//*[@id='u_0_a']/div[1]/div[1]/div/a/span")).click();
 	Thread.sleep(1000);
 

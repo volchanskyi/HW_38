@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -70,7 +71,12 @@ public class FacebookIE {
 	driver.findElement(By.id("userNavigationLabel")).click();
 	// Thread.sleep(1000);
 	driver.findElement(By.partialLinkText("Log Out")).click();
+	
+	
+	
 
+	
+	
 	Thread.sleep(1000);
 	driver.quit();
 
@@ -78,5 +84,12 @@ public class FacebookIE {
 	System.out.println("Title of the page: " + title);
 	System.out.println("Copyright: " + copyright);
 	System.out.println("Friends: You have " + friends + " friends");
+    }
+    
+    private static void enableChkBox(WebElement param) {
+	if(!param.isSelected()){
+	    System.out.println("Checkbox is toggled Off. Turning it On");
+	    param.click();
+	}
     }
 }
